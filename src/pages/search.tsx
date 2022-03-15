@@ -42,7 +42,7 @@ export default function Search({ searchResults }: Props) {
                     <h1 className="text-3xl font-semibold mt-2 mb-6">
                         Stay in {location}
                     </h1>
-                    <div className="hidden lg:inline-flex space-x-3 text-gray-800 whitespace-nowrap">
+                    <div className="hidden lg:inline-flex space-x-3 text-gray-800 whitespace-nowrap mb-4">
                         <p className="button">Cancellation Flexibility</p>
                         <p className="button">Type of Place</p>
                         <p className="button">Price</p>
