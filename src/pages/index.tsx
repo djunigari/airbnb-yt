@@ -1,5 +1,6 @@
 import Banner from '@components/Banner'
 import Header from '@components/Header'
+import MediumCard from '@components/MediumCard'
 import SmallCard from '@components/SmallCard'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
@@ -10,11 +11,17 @@ interface IExploreData {
     distance: string
 }
 
-interface Props {
-    exploreData: [IExploreData]
+interface ICardsData {
+    img: string
+    title: string
 }
 
-export default function Home({ exploreData }: Props) {
+interface Props {
+    exploreData: [IExploreData]
+    cardsData: [ICardsData]
+}
+
+export default function Home({ exploreData, cardsData }: Props) {
     console.log(exploreData)
     return (
         <div>
@@ -42,6 +49,17 @@ export default function Home({ exploreData }: Props) {
                         ))}
                     </div>
                 </section>
+                <section>
+                    <h2 className='text-4xl font-semibold py-8'>Live Anywhere</h2>
+                    <div className='flex space-x-3 overflow-scroll scrollbar-hide p-3 ml-3'>
+                        {cardsData?.map(({ img, title }) => (
+                            <MediumCard key={img}
+                                img={img}
+                                title={title}
+                            />
+                        ))}
+                    </div>
+                </section>
             </main>
         </div>
     )
@@ -50,9 +68,12 @@ export default function Home({ exploreData }: Props) {
 export const getStaticProps: GetStaticProps = async (context) => {
     const exploreData = await fetch('http://localhost:3000/api/explore-data')
         .then(res => res.json())
+    const cardsData = await fetch('http://localhost:3000/api/cards-data')
+        .then(res => res.json())
     return {
         props: {
-            exploreData
+            exploreData,
+            cardsData
         }
     }
 }
