@@ -1,9 +1,10 @@
 import Banner from '@components/Banner'
+import Footer from '@components/Footer'
 import Header from '@components/Header'
 import LargeCard from '@components/LargeCard'
 import MediumCard from '@components/MediumCard'
 import SmallCard from '@components/SmallCard'
-import type { GetStaticProps, NextPage } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 
 interface IExploreData {
@@ -68,6 +69,8 @@ export default function Home({ exploreData, cardsData }: Props) {
                     buttonText="Get Inspired"
                 />
             </main>
+
+            <Footer />
         </div>
     )
 }
