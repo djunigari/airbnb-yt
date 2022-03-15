@@ -24,7 +24,6 @@ interface Props {
 }
 
 export default function Home({ exploreData, cardsData }: Props) {
-    console.log(exploreData)
     return (
         <div>
             <Head>
@@ -76,9 +75,9 @@ export default function Home({ exploreData, cardsData }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const exploreData = await fetch(`${process.env.HOST}/api/explore-data`)
+    const exploreData = await fetch('https://links.papareact.com/pyp')
         .then(res => res.json())
-    const cardsData = await fetch(`${process.env.HOST}/api/cards-data`)
+    const cardsData = await fetch('https://links.papareact.com/zp1')
         .then(res => res.json())
     return {
         props: {
