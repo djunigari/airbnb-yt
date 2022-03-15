@@ -76,9 +76,9 @@ export default function Home({ exploreData, cardsData }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const exploreData = await fetch('http://localhost:3000/api/explore-data')
+    const exploreData = await fetch(`${process.env.HOST}/api/explore-data`)
         .then(res => res.json())
-    const cardsData = await fetch('http://localhost:3000/api/cards-data')
+    const cardsData = await fetch(`${process.env.HOST}/api/cards-data`)
         .then(res => res.json())
     return {
         props: {
