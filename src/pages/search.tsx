@@ -1,9 +1,9 @@
 import Footer from "@components/Footer";
 import Header from "@components/Header";
 import InfoCard from "@components/InfoCard";
+import Map from "@components/Map";
 import { format } from "date-fns";
 import { GetServerSideProps } from "next";
-import { route } from "next/dist/server/router";
 import { useRouter } from "next/router";
 
 interface resultData {
@@ -30,7 +30,6 @@ export default function Search({ searchResults }: Props) {
     const formattedEndDate = format(new Date(endDate as string || new Date()), "dd MMMM yy")
     const range = `${formattedStartDate} - ${formattedEndDate}`
 
-    console.log(searchResults)
     return (
         <div>
             <Header placeholder={`${location} | ${range} | ${numberOfGuests} guests`} />
@@ -65,6 +64,9 @@ export default function Search({ searchResults }: Props) {
                             />
                         ))}
                     </div>
+                </section>
+                <section className="relative xl:min-w-[600px] xl:h-[400px]">
+                    <Map searchResults={searchResults} />
                 </section>
             </main>
             <Footer />
